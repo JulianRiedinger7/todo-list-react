@@ -20,24 +20,26 @@ const TodoForm = ({ addTodo }) => {
 	};
 
 	return (
-		<form className="flex flex-col mb-10" onSubmit={handleSubmit}>
+		<form className="flex flex-col mb-10 text-lg" onSubmit={handleSubmit}>
 			<label htmlFor="producto">Ingresa un Producto</label>
-			<input
-				type="text"
-				className="p-2 border border-slate-800 rounded-lg shadow-md text-black"
-				id="producto"
-				placeholder="producto..."
-				value={product}
-				onChange={handleChange}
-				autoComplete="off"
-			/>
-			{error && <small className="text-red-500">{error}</small>}
-			<button
-				type="submit"
-				className="uppercase tracking-wider bg-teal-500 mt-5 py-2 px-4 rounded-lg shadow-lg"
-			>
-				Agregar
-			</button>
+			<div className="flex items-center">
+				<input
+					type="text"
+					className="h-10 p-2 border border-slate-800 rounded-lg shadow-md text-black"
+					id="producto"
+					placeholder="producto..."
+					value={product}
+					onChange={handleChange}
+					autoComplete="off"
+				/>
+				{error && <small className="text-red-500">{error}</small>}
+				<button
+					type="submit"
+					className="uppercase tracking-wider bg-teal-500 py-2 px-4 rounded-lg shadow-lg h-10 "
+				>
+					Agregar
+				</button>
+			</div>
 		</form>
 	);
 };
