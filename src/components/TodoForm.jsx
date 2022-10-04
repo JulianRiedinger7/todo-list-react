@@ -1,41 +1,34 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const TodoForm = ({ addTodo }) => {
-	const [product, setProduct] = useState('');
-	const [error, setError] = useState('');
+	const [userInput, setUserInput] = useState('');
+
+	const handleChange = (evt) => {
+		setUserInput(evt.target.value);
+	};
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
-		if (product === '') {
-			setError('Es necesario que ingreses un producto');
-		} else {
-			addTodo(product);
-			setProduct('');
-		}
-	};
-
-	const handleChange = (evt) => {
-		setProduct(evt.target.value);
-		setError('');
+		addTodo(userInput);
+		setUserInput('');
 	};
 
 	return (
-		<form className="flex flex-col mb-10 text-lg" onSubmit={handleSubmit}>
-			<label htmlFor="producto">Ingresa un Producto</label>
+		<form className="flex flex-col gap-2 text-lg" onSubmit={handleSubmit}>
+			<label htmlFor="userInput">Ingrese una tarea</label>
 			<div className="flex items-center">
 				<input
 					type="text"
-					className="h-10 p-2 border border-slate-800 rounded-lg shadow-md text-black"
-					id="producto"
-					placeholder="producto..."
-					value={product}
+					id="userInput"
+					className="border-2 border-black rounded-lg p-2 text-black font-medium"
+					placeholder="Tarea..."
+					value={userInput}
 					onChange={handleChange}
 					autoComplete="off"
 				/>
-				{error && <small className="text-red-500">{error}</small>}
 				<button
 					type="submit"
-					className="uppercase tracking-wider bg-teal-500 py-2 px-4 rounded-lg shadow-lg h-10 "
+					className="text-white font-medium uppercase tracking-widest bg-gradient-to-r to-teal-500 from-teal-600 px-4 py-2 rounded-lg shadow-md"
 				>
 					Agregar
 				</button>

@@ -1,10 +1,16 @@
+import React from 'react';
 import TodoItem from './TodoItem';
 
-const TodoList = ({ products, handleDelete }) => {
+const TodoList = ({ todos, handleDelete, handleComplete }) => {
 	return (
-		<div className="flex flex-col gap-5 w-10/12">
-			{products.map((product) => (
-				<TodoItem key={product.id} handleDelete={handleDelete} {...product} />
+		<div>
+			{todos.map((todo) => (
+				<TodoItem
+					key={todo.id}
+					{...todo}
+					handleDelete={handleDelete}
+					handleComplete={handleComplete}
+				/>
 			))}
 		</div>
 	);
